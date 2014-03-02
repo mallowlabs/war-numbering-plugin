@@ -21,38 +21,29 @@ import java.nio.file.StandardCopyOption;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
 import org.kohsuke.stapler.DataBoundConstructor;
-import org.kohsuke.stapler.StaplerRequest;
 
 /**
- * Sample {@link Builder}.
- * 
- * <p>
- * When the user configures the project and enables this builder,
- * {@link DescriptorImpl#newInstance(StaplerRequest)} is invoked and a new
- * {@link WarVersioningBuilder} is created. The created instance is persisted to
- * the project configuration XML by using XStream, so this allows you to use
- * instance fields (like {@link #rename}) to remember the configuration.
- * 
- * <p>
- * When a build is performed, the
- * {@link #perform(AbstractBuild, Launcher, BuildListener)} method will be
- * invoked.
- * 
- * @author Kohsuke Kawaguchi
+ * War Versioning {@link Builder} .
  */
 public class WarVersioningBuilder extends Builder {
-
+    /** enable to rename option. */
     private final boolean rename;
 
-    // Fields in config.jelly must match the parameter names in the
-    // "DataBoundConstructor"
+    /**
+     * Constructor
+     * 
+     * @param rename
+     *            enable to rename option
+     */
     @DataBoundConstructor
     public WarVersioningBuilder(boolean rename) {
         this.rename = rename;
     }
 
     /**
-     * We'll use this from the <tt>config.jelly</tt>.
+     * enable to rename option.
+     * 
+     * @return true: rename, false: hardlink
      */
     public boolean getRename() {
         return rename;
@@ -116,9 +107,6 @@ public class WarVersioningBuilder extends Builder {
         return hardlink.toPath();
     }
 
-    // Overridden for better type safety.
-    // If your plugin doesn't really define any property on Descriptor,
-    // you don't have to do this.
     @Override
     public DescriptorImpl getDescriptor() {
         return (DescriptorImpl) super.getDescriptor();
