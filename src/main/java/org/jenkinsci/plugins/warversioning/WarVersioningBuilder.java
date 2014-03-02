@@ -154,7 +154,7 @@ public class WarVersioningBuilder extends Builder {
          * This human readable name is used in the configuration screen.
          */
         public String getDisplayName() {
-            return "War versioning";
+            return Messages.WarVersioning_DisplayName();
         }
     }
 }
