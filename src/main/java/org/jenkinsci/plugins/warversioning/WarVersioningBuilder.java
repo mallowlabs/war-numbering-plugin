@@ -1,19 +1,20 @@
 package org.jenkinsci.plugins.warversioning;
-import hudson.Launcher;
 import hudson.Extension;
-import hudson.util.FormValidation;
-import hudson.model.AbstractBuild;
+import hudson.Launcher;
 import hudson.model.BuildListener;
+import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
-import hudson.tasks.Builder;
 import hudson.tasks.BuildStepDescriptor;
-import net.sf.json.JSONObject;
-import org.kohsuke.stapler.DataBoundConstructor;
-import org.kohsuke.stapler.StaplerRequest;
-import org.kohsuke.stapler.QueryParameter;
+import hudson.tasks.Builder;
+import hudson.util.FormValidation;
+
+import java.io.IOException;
 
 import javax.servlet.ServletException;
-import java.io.IOException;
+
+import org.kohsuke.stapler.DataBoundConstructor;
+import org.kohsuke.stapler.QueryParameter;
+import org.kohsuke.stapler.StaplerRequest;
 
 /**
  * Sample {@link Builder}.
@@ -21,7 +22,7 @@ import java.io.IOException;
  * <p>
  * When the user configures the project and enables this builder,
  * {@link DescriptorImpl#newInstance(StaplerRequest)} is invoked
- * and a new {@link HelloWorldBuilder} is created. The created
+ * and a new {@link WarVersioningBuilder} is created. The created
  * instance is persisted to the project configuration XML by using
  * XStream, so this allows you to use instance fields (like {@link #name})
  * to remember the configuration.
@@ -32,13 +33,13 @@ import java.io.IOException;
  *
  * @author Kohsuke Kawaguchi
  */
-public class HelloWorldBuilder extends Builder {
+public class WarVersioningBuilder extends Builder {
 
     private final String name;
 
     // Fields in config.jelly must match the parameter names in the "DataBoundConstructor"
     @DataBoundConstructor
-    public HelloWorldBuilder(String name) {
+    public WarVersioningBuilder(String name) {
         this.name = name;
     }
 
@@ -68,7 +69,7 @@ public class HelloWorldBuilder extends Builder {
     }
 
     /**
-     * Descriptor for {@link HelloWorldBuilder}. Used as a singleton.
+     * Descriptor for {@link WarVersioningBuilder}. Used as a singleton.
      * The class is marked as public so that it can be accessed from views.
      *
      * <p>
