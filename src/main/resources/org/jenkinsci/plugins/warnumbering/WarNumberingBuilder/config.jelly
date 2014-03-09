@@ -9,7 +9,13 @@
     Creates a text field that shows the value of the "name" property.
     When submitted, it will be passed to the corresponding constructor parameter.
   -->
-  <f:entry title="${%Rename instead of creating hardlink}" field="rename">
-    <f:checkbox/>
-  </f:entry>
+  <f:entry field="outputType">
+    <f:radio name="${id}.outputType" value="hardlink" checked="${instance.outputType == null || instance.outputType == 'hardlink'}" id="outputType.hardlink"/>
+    <st:nbsp/>
+    <label for="outputType.hardlink">${%Use hardlink}</label>
+    <br/>
+    <f:radio name="${id}.outputType" value="rename" checked="${instance.outputType == 'rename'}" id="outputType.rename"/>
+    <st:nbsp/>
+    <label for="outputType.rename">${%Use rename}</label>
+  </f:entry> 
 </j:jelly>

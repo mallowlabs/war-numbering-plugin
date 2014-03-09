@@ -26,27 +26,32 @@ import org.kohsuke.stapler.DataBoundConstructor;
  * War Numbering {@link Builder} .
  */
 public class WarNumberingBuilder extends Builder {
-    /** enable to rename option. */
-    private final boolean rename;
+    /** Output type: hardlink */
+    private static final String OUTPUT_TYPE_HARDLINK = "hardlink";
+    /** Output type: move */
+    private static final String OUTPUT_TYPE_RENAME = "rename";
+
+    /** output type option. */
+    private String outputType;
 
     /**
      * Constructor
      * 
-     * @param rename
-     *            enable to rename option
+     * @param outputType
+     *            output type option
      */
     @DataBoundConstructor
-    public WarNumberingBuilder(boolean rename) {
-        this.rename = rename;
+    public WarNumberingBuilder(String outputType) {
+        this.outputType = outputType;
     }
 
     /**
-     * enable to rename option.
+     * output type option.
      * 
-     * @return true: rename, false: hardlink
+     * @return 'hardlink' or 'move'
      */
-    public boolean getRename() {
-        return rename;
+    public String getOutputType() {
+        return outputType;
     }
 
     @Override
@@ -73,7 +78,7 @@ public class WarNumberingBuilder extends Builder {
                                 "Create link " + hardlink.toFile().getName()
                                         + " to " + f.getName());
 
-                        if (rename) {
+                        if (OUTPUT_TYPE_RENAME.equals(getOutputType())) {
                             Files.move(f.toPath(), hardlink,
                                     StandardCopyOption.REPLACE_EXISTING);
                         } else {
