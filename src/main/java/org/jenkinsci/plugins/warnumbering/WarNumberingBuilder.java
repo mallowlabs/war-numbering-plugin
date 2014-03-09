@@ -1,4 +1,4 @@
-package org.jenkinsci.plugins.warversioning;
+package org.jenkinsci.plugins.warnumbering;
 
 import hudson.Extension;
 import hudson.FilePath;
@@ -23,9 +23,9 @@ import org.apache.commons.lang.StringUtils;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
- * War Versioning {@link Builder} .
+ * War Numbering {@link Builder} .
  */
-public class WarVersioningBuilder extends Builder {
+public class WarNumberingBuilder extends Builder {
     /** enable to rename option. */
     private final boolean rename;
 
@@ -36,7 +36,7 @@ public class WarVersioningBuilder extends Builder {
      *            enable to rename option
      */
     @DataBoundConstructor
-    public WarVersioningBuilder(boolean rename) {
+    public WarNumberingBuilder(boolean rename) {
         this.rename = rename;
     }
 
@@ -67,7 +67,7 @@ public class WarVersioningBuilder extends Builder {
                             return null;
                         }
 
-                        Path hardlink = createVersioningWarPath(f, buildNumber);
+                        Path hardlink = createNumberingWarPath(f, buildNumber);
 
                         listener.getLogger().println(
                                 "Create link " + hardlink.toFile().getName()
@@ -94,7 +94,7 @@ public class WarVersioningBuilder extends Builder {
         return true;
     }
 
-    private Path createVersioningWarPath(File f, String buildNumber) {
+    private Path createNumberingWarPath(File f, String buildNumber) {
         String name = f.getName();
 
         String basename = FilenameUtils.getBaseName(name);
@@ -113,7 +113,7 @@ public class WarVersioningBuilder extends Builder {
     }
 
     /**
-     * Descriptor for {@link WarVersioningBuilder}. Used as a singleton. The
+     * Descriptor for {@link WarNumberingBuilder}. Used as a singleton. The
      * class is marked as public so that it can be accessed from views.
      * 
      * <p>
@@ -142,7 +142,7 @@ public class WarVersioningBuilder extends Builder {
          * This human readable name is used in the configuration screen.
          */
         public String getDisplayName() {
-            return Messages.WarVersioning_DisplayName();
+            return Messages.WarNumbering_DisplayName();
         }
     }
 }

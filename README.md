@@ -1,4 +1,4 @@
-Jenkins War Versioning Plugin
+Jenkins War Numbering Plugin
 =======================================
 
 [Parallel deployment](http://tomcat.apache.org/tomcat-7.0-doc/config/context.html#Parallel_deployment) of Tomcat 7 is useful.
@@ -14,13 +14,13 @@ Build:
 
     $ mvn package
 
-You will get target/war-versioning.hpi
+You will get target/war-numbering.hpi
 
 License
 ---------------
 The MIT License
 
-Copyright (c) 2011 codefrist
+Copyright (c) 2014 codefrist
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
