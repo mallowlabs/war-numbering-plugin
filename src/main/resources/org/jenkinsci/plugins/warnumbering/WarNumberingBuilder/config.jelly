@@ -12,10 +12,10 @@
   <f:entry field="outputType">
     <f:radio name="${id}.outputType" value="hardlink" checked="${instance.outputType == null || instance.outputType == 'hardlink'}" id="outputType.hardlink"/>
     <st:nbsp/>
-    <label for="outputType.hardlink">${%Use hardlink}</label>
+    <label class="attach-previous">${%Use hardlink}</label>
     <br/>
     <f:radio name="${id}.outputType" value="rename" checked="${instance.outputType == 'rename'}" id="outputType.rename"/>
     <st:nbsp/>
-    <label for="outputType.rename">${%Use rename}</label>
+    <label class="attach-previous">${%Use rename}</label>
   </f:entry> 
 </j:jelly>
