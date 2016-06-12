@@ -1,4 +1,4 @@
-Jenkins War Numbering Plugin
+Jenkins War Numbering Plugin ![build status](https://circleci.com/gh/mallowlabs/war-numbering-plugin/tree/master.svg?style=shield)
 =======================================
 
 [Parallel deployment](http://tomcat.apache.org/tomcat-7.0-doc/config/context.html#Parallel_deployment) of Tomcat 7 is useful.
