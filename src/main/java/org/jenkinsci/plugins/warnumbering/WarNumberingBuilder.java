@@ -1,17 +1,5 @@
 package org.jenkinsci.plugins.warnumbering;
 
-import hudson.Extension;
-import hudson.FilePath;
-import hudson.FilePath.FileCallable;
-import hudson.Launcher;
-import hudson.Util;
-import hudson.model.BuildListener;
-import hudson.model.AbstractBuild;
-import hudson.model.AbstractProject;
-import hudson.remoting.VirtualChannel;
-import hudson.tasks.BuildStepDescriptor;
-import hudson.tasks.Builder;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -20,7 +8,20 @@ import java.nio.file.StandardCopyOption;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
+import org.jenkinsci.remoting.RoleChecker;
 import org.kohsuke.stapler.DataBoundConstructor;
+
+import hudson.Extension;
+import hudson.FilePath;
+import hudson.FilePath.FileCallable;
+import hudson.Launcher;
+import hudson.Util;
+import hudson.model.AbstractBuild;
+import hudson.model.AbstractProject;
+import hudson.model.BuildListener;
+import hudson.remoting.VirtualChannel;
+import hudson.tasks.BuildStepDescriptor;
+import hudson.tasks.Builder;
 
 /**
  * War Numbering {@link Builder} .
@@ -87,6 +88,11 @@ public class WarNumberingBuilder extends Builder {
 
                         return null;
                     }
+
+					@Override
+					public void checkRoles(RoleChecker checker) throws SecurityException {
+						// do nothing
+					}
                 });
             }
         } catch (IOException e) {
